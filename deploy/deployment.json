@@ -1,0 +1,38 @@
+{
+    "merchant": "High Fidelity Records",
+    "owner": {
+        "name": "Karan Saini",
+        "email": "hostile@gmail.com"
+    },
+    "admin":{
+        "name": "Karan Saini",
+        "email": "hostile@gmail.com"
+    },
+    "bitcoin":{
+        "watch_only":true,
+        "prune":true,
+        "public_key":{
+            "fingerprint":"408fe6c2",
+            "derivation_path":"m/84h/1h/1h",
+            "xpub": "tpubDDDPBb2ut5YPq6t77sjwQSJ7FUVdqy2GYybMSqDdnixph3HEBddDHQTPpvXGgWDAe7t2s143MJoTf7gZQdMMspEp1VMP4sk1yQjbqGqhreX"
+        },
+        "notifications":{
+            "email": ["owner", "admin"],
+            "callbacks": [
+                "https://api.longplay.in/cart/checkout"
+            ]
+        } 
+    },
+    "server":{
+        "host": "longplay.in",
+        "subdomain": "satspay",
+        "provider": {
+            "name": "lunanode",
+            "api_id": "$LUNA_NODE_API_ID",
+            "api_key": "$LUNA_NODE_API_KEY",
+            "ssh_id": "$LUNA_NODE_API_ID"
+        }
+    }
+    
+    
+}
