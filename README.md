@@ -35,25 +35,18 @@ Lunanode is a cloud resource provider which is used to setup your satoshipay ser
 
 ### software
 
-- [cyphernode](https://cyphernode.io)
+- [satsbank](https://satsbank.io) (base) Operator panel
 
-cyphernode is containerized network of applications that provide the basis to build bitcoin infrastructure. It is designed with [bitcoin-core](https://bitcoin.org) at the center, running as a peer on the bitcoin network and managing all transactions related to its registered public keys. Other `cypherapps` can connect to the `cyphernodenet` which is the encrypted docker overlay network that together makes up your infrastructure.
-
-- [satsbank](https://satsbank.io) 
-
-The admin application used by vendors to manage their business accounts with multi user access control. It is a Vanilla [html,css,js] web client, and a light-weight [rust-warp](https://github.com/seanmonstar/warp) server and [rust-sled](https://github.com/spacejam/sled) database. The server exposes a http api that mimicks core rpc with additional muliti-factor authentication. It also exposes a simple bdk wallet api for the option to run without a local node. This api can easily be integrated into your websites like traditional payment gateway apis. For physical shops, addresses and qr codes can be printed from the admin panel with custom invoicing metadata.
+The admin application used by vendors to manage their business accounts with multi user access control. It is a Vanilla [html,css,js] web client, and a light-weight [rust-warp](https://github.com/seanmonstar/warp) server and [rust-sled](https://github.com/spacejam/sled) database. The server exposes a http api that mimicks core rpc with additional muliti-factor authentication. It also exposes a simple [bdk](https://github.com/bitcoindevkit/bdk) wallet api for the option to run without a local node. This api can easily be integrated into your websites like traditional payment gateway apis. For physical shops, addresses and qr codes can be printed from the admin panel with custom invoicing metadata.
 
 It also focusses on being a watch-only wallet first. It is designed to work best with `trezor`, `bitbox` or `coldcard`.
 
-- [specter](https://specter.solutions) (optional)
+- [cyphernode](https://cyphernode.io) (optional) For nodes
 
-A wallet for a vendor to manage their private accounts.
+cyphernode is containerized network of applications that provide the basis to build bitcoin infrastructure. It is designed with [bitcoin-core](https://bitcoin.org) at the center, running as a peer on the bitcoin network and managing all transactions related to its registered public keys. Other `cypherapps` can connect to the `cyphernodenet` which is the encrypted docker overlay network that together makes up your infrastructure.
 
-- [bdk](https://bitcoindevkit.com) (custom) 
 
-bdk is an example of a great tool to write extensions to `satoshipay` since satsbank also uses bdk for its native wallet. `bdk-cli` is also bundled as a `cypherapp` for new users to get their feet wet and explore the possibilities with the `bdk` library.
-
-- [localbitcoins-api](https://api.localbitcoins.com) (custom)
+- [localbitcoins-api](https://api.localbitcoins.com) (optional) Fiat Exchange
 
 LBC is a peer-to-peer bitcoin exchange that exposes a simple api to buy and sell Bitcoin against local currencies. Vendors can easily plug-in with a custom LBC `cypherapp` to manage their LBC account and setup a sell schedule when fiat is required to pay local bills.
 
