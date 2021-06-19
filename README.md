@@ -1,6 +1,8 @@
 # satoshipay
 
-The goal of `satoshipay` is to provide a plug and play bitcoin infrastructure management platform for individuals/merchants to manage bitcoin accounts for their physical or online businesses.
+The goal of `satoshipay` is to provide a plug and play orchestration of custom bitcoin infrastructure for individuals/merchants to manage bitcoin accounts for their physical or online businesses.
+
+It provides a suite of open source software with accompanying deployment, configuration and monitoring applications and scripts. 
 
 ## goals
 
@@ -11,13 +13,13 @@ Admins:
 - secure, light-weight & extendable
 
 Community:
-- public sound money infrastructure
+- public standardized sound money tooling
 
 ## specifications
 
 - bitcoin-only
-- all satoshi units
-- linux/mac/windows
+- satoshi units
+- 
 
 ## dependencies
 
@@ -39,9 +41,7 @@ cyphernode is containerized network of applications that provide the basis to bu
 
 - [satsbank](https://satsbank.io) 
 
-The admin application used by vendors to manage their business accounts. Multiple users can be setup. It can be accessed at a domain hosted on lunanode. It is a Vanilla [html,css,js] web client, and a light-weight [rust] server. The backend also exposes an http api that mimicks core rpc with additional muliti-factor authentication. This can easily be integrated into your websites. For physical shops, addresses and qr codes can be printed from the admin panel with custom invoicing metadata.
-
-It focusses on being a direct (retain the original rpc api) interface to your full-node via the bitcoin-core rpc with the addition of modular multi-factor authentication for permissioned access. If a vendor decides not use a full-node, it can run a light weight `bdk` based wallet which connects to blockstream's full-node.
+The admin application used by vendors to manage their business accounts with multi user access control. It is a Vanilla [html,css,js] web client, and a light-weight [rust-warp](https://github.com/seanmonstar/warp) server and [rust-sled](https://github.com/spacejam/sled) database. The server exposes a http api that mimicks core rpc with additional muliti-factor authentication. It also exposes a simple bdk wallet api for the option to run without a local node. This api can easily be integrated into your websites like traditional payment gateway apis. For physical shops, addresses and qr codes can be printed from the admin panel with custom invoicing metadata.
 
 It also focusses on being a watch-only wallet first. It is designed to work best with `trezor`, `bitbox` or `coldcard`.
 
@@ -53,12 +53,15 @@ A wallet for a vendor to manage their private accounts.
 
 bdk is an example of a great tool to write extensions to `satoshipay` since satsbank also uses bdk for its native wallet. `bdk-cli` is also bundled as a `cypherapp` for new users to get their feet wet and explore the possibilities with the `bdk` library.
 
+- [localbitcoins-api](https://api.localbitcoins.com) (custom)
+
+LBC is a peer-to-peer bitcoin exchange that exposes a simple api to buy and sell Bitcoin against local currencies. Vendors can easily plug-in with a custom LBC `cypherapp` to manage their LBC account and setup a sell schedule when fiat is required to pay local bills.
 
 ## flow 
 
 ### deploy 
 
-> Define requirements and deploy resources
+> Define resource requirements and deploy
 
 - Fill out basic merchant information in `deploy.json`
 
@@ -86,7 +89,7 @@ bdk is an example of a great tool to write extensions to `satoshipay` since sats
 
 ### configure
 
-> Configure resources to serve specific client
+> Configure infrastructure and applications according to client specifications
 
 - SSH  into satoshipay server and run satoshipay/configure/config.sh 
 
@@ -98,12 +101,12 @@ bdk is an example of a great tool to write extensions to `satoshipay` since sats
 
 ### monitor
 
-> Provide client access to services
+> Monitor infrastructure and use applications
 
 - Visit `subdomain.host.tld`
 
 # support: 
 
-### Please open issues, PR's or send me an email
+### Please open issues, pull requests or send me an email
 
 ##### vishalmenon.92@gmail.com
